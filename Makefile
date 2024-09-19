@@ -31,5 +31,14 @@ init_db:
 	symfony console doctrine:schema:update --force
 	symfony console doctrine:fixtures:load
 
+ca-install:
+	symfony server:ca:install
+
+start: up
+	symfony serve -d
+
+stop:
+	symfony server:stop
+
 logs:
 	docker compose logs -f

@@ -107,3 +107,15 @@ And as always, thanks so much for your support and letting
 us do what we love!
 
 <3 Your friends at SymfonyCasts
+
+
+# DOCKER
+
+```
+make php8
+make install
+make up
+make init_db
+make start
+# make stop # to shutdown the server
+```
