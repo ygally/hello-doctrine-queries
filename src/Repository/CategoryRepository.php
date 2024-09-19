@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Category;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\Common\Collections\Criteria;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -41,9 +42,12 @@ class CategoryRepository extends ServiceEntityRepository
 
     public function findAllOrdered(): array
     {
-        $dql = "SELECT c FROM App\Entity\Category c ORDER BY c.name DESC";
+        // $dql = "SELECT c FROM App\Entity\Category c ORDER BY c.name DESC";
 
-        $query = $this->getEntityManager()->createQuery($dql);
+        $qb = $this->createQueryBuilder('c')
+            ->orderBy('c.name', Criteria::DESC);
+
+        $query = $qb->getQuery();
 
         return $query->getResult();
     }
